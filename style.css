@@ -1,24 +1,36 @@
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .container {
-    width: 300px;
-    padding: 20px;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#noteList {
+  margin-top: 20px;
+}
+
+#noteList p {
+  font-style: italic;
+  color: #666;
+}
