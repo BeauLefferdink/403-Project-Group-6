@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageNotes</title>
+    <style>
+        body {
+            width: 300px; /* Set the width of the popup window to 300px */
+            padding: 20px; /* Increase padding for better readability */
+            font-family: 'Helvetica Neue', sans-serif; /* Change the font to Helvetica Neue */
+        }
+
+        /* Custom styling for saved note buttons */
+        .savedNoteButton {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Apply Helvetica Neue font to the textarea */
+        textarea {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to PageNotes!</h1>
+    <button id="addNote">Add note</button>
+    <div id="noteForm" style="display:none;">
+        <div>
+            <span>URL:</span>
+            <input type="text" id="noteUrl">
+        </div>
+        <textarea id="noteContent" rows="5" cols="20"></textarea>
+        <button id="saveNote">Save</button>
+    </div>
+    <div id="savedNotes"></div>
+    <script src="popup.js"></script>
+    <!-- Add this div for displaying the 'Saved!' message -->
+    <div id="savedMessage" style="display: none; background-color: lightgreen; color: white; padding: 10px; margin-top: 10px; border-radius: 5px;">Saved!</div>
+</body>
+</html>
