@@ -1,20 +1,34 @@
-// popup.js
-
-console.log('Popup script loaded!');
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM content loaded!');
-    
+
     const addButton = document.getElementById('add-note');
-    
-    console.log('Add button:', addButton);
-    
+  
     if (addButton) {
-        addButton.addEventListener('click', function() {
-            console.log('Button clicked!');
-            // Perform any action you want when the "Add Note" button is clicked
+  
+      addButton.addEventListener('click', function() {
+  
+        // Create a textarea element
+        const textbox = document.createElement('textarea');
+  
+        // Set some properties 
+        textbox.cols = 30;
+        textbox.rows = 5;
+  
+        // Add a CSS class to style it
+        textbox.classList.add('note-textbox'); 
+  
+        // Append it to the body or another container
+        document.body.appendChild(textbox);
+  
+        // Focus the textarea 
+        textbox.focus();
+  
+        // Optionally, remove the textbox on blur
+        textbox.addEventListener('blur', function() {
+          textbox.remove();  
         });
-    } else {
-        console.log('Add button not found!');
+  
+      });
+  
     }
-});
+  
+  });
