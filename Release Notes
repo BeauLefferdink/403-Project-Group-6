@@ -1,6 +1,6 @@
 PageNotes allows you to take notes on webpages and save them for later. Here's how it works:
 
-1.	Download the ZIP file attached to this email
+1.	Download the entire extension folder from GitHub or from the attached ZIP file, if it was sent to you as an email
 2.	Unzip the file from your computer’s directory into a folder
 3.	Load the extension folder into the extensions page (chrome://extensions) by clicking “Load unpacked”
 4.	Open a webpage you want to take notes on
