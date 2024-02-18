@@ -1,22 +1,24 @@
 {
-  "manifest_version": 2,
-  "name": "Note Manager",
-  "version": "1.0",
-  "description": "A Chrome extension for managing notes.",
-  "permissions": [],
-  "browser_action": {
-    "default_popup": "welcome.html",
-    "default_icon": {
-      "16": "images/icon.png"
+    "manifest_version": 3,
+    "name": "PageNotes",
+    "version": "1.0",
+    "description": "A simple sticky notes extension for Chrome.",
+    "icons": {
+      "128": "icon.png"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "permissions": [
+      "storage"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "options_page": "options.html",
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
     }
-  },
-  "icons": {
-    "16": "images/icon.png"
-  },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "content_scripts": [],
-  "web_accessible_resources": []
-}
+  }
+  
