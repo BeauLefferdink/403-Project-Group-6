@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const noteContent = document.getElementById('noteContent');
     const savedNotesDiv = document.getElementById('savedNotes');
     
+    addNoteButton.classList.add('addNoteButton');
+    
     
     addNoteButton.onclick = function () {
         noteForm.style.display = 'block';

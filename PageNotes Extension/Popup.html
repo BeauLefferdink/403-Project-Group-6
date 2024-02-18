@@ -25,11 +25,21 @@
             font-family: 'Helvetica Neue', sans-serif;
             font-size: 14px; /* Adjust the font size as needed */
         }
+
+        /* Margin for the Add note button */
+        .addNoteButton {
+            margin-bottom: 20px; /* Adjust the margin-bottom value as needed for spacing */
+        }
+
+        /* Styling for the "Note Library" text */
+        .noteLibraryText {
+            font-size: 14px; /* Increase font size for the Note Library text */
+        }
     </style>
 </head>
 <body>
     <h1>Welcome to PageNotes!</h1>
-    <button id="addNote">Add note</button>
+    <button id="addNote" class="addNoteButton">Add note</button>
     <div id="noteForm" style="display:none;">
         <div>
             <span>URL:</span>
@@ -38,6 +48,7 @@
         <textarea id="noteContent" rows="5" cols="20"></textarea>
         <button id="saveNote">Save</button>
     </div>
+    <p class="noteLibraryText">Note Library:</p>
     <div id="savedNotes"></div>
     <script src="popup.js"></script>
     <!-- Add this div for displaying the 'Saved!' message -->
