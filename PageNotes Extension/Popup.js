@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         mlaWebsiteTitle.value = '';
         mlaPublisher.value = '';
         mlaPublicationDate.value = '';
+        mlaFormatDisplay.style.display = 'none';
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             noteUrl.value = tabs[0].url;
         });
@@ -46,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
             [noteName]: {url, content, author, title, websiteTitle, publisher, publicationDate}
         }, function() {
             console.log('Note and MLA info saved.');
-            noteForm.style.display = 'none';
             loadNotes();
         });
     }
@@ -54,15 +54,50 @@ document.addEventListener('DOMContentLoaded', function () {
     saveNoteButton.onclick = saveNote;
 
     generateMLAButton.onclick = function() {
-        const author = mlaAuthor.value.trim() || 'Author';
-        const title = mlaTitle.value.trim() || 'Title';
-        const websiteTitle = mlaWebsiteTitle.value.trim() || 'Website Title';
-        const publisher = mlaPublisher.value.trim() || 'Publisher';
-        const publicationDate = mlaPublicationDate.value.trim() || 'Publication Date';
-        const url = noteUrl.value.trim() || 'URL';
-
-        const mlaCitation = `${author}. "${title}." ${websiteTitle}, ${publisher}, ${publicationDate}, ${url}.`;
-        mlaFormatDisplay.textContent = mlaCitation;
+        const author = mlaAuthor.value.trim() || '';
+        const title = mlaTitle.value.trim() || '';
+        const websiteTitle = mlaWebsiteTitle.value.trim() || '';
+        const publisher = mlaPublisher.value.trim() || '';
+        const publicationDate = mlaPublicationDate.value.trim() || '';
+        const url = noteUrl.value.trim() || '';
+    
+        // Split the author name into last name and first name
+        const authorNames = author.split(' ');
+        const lastName = authorNames.pop() || '';
+        const firstName = authorNames.join(' ') || '';
+    
+        // Format the publication date
+        let formattedDate = '';
+        if (publicationDate) {
+            const dateObject = new Date(publicationDate);
+            const day = dateObject.getDate();
+            const month = dateObject.toLocaleString('default', { month: 'short' });
+            const year = dateObject.getFullYear();
+            formattedDate = `${day} ${month}. ${year}`;
+        }
+    
+        // Generate the MLA citation
+        let mlaCitation = '';
+        if (author) {
+            mlaCitation += `${lastName}, ${firstName}. `;
+        }
+        if (title) {
+            mlaCitation += `"${title}." `;
+        }
+        if (websiteTitle) {
+            mlaCitation += `${websiteTitle}, `;
+        }
+        if (publisher) {
+            mlaCitation += `${publisher}, `;
+        }
+        if (formattedDate) {
+            mlaCitation += `${formattedDate}, `;
+        }
+        if (url) {
+            mlaCitation += `${url}.`;
+        }
+    
+        mlaFormatDisplay.textContent = mlaCitation.trim();
         mlaFormatDisplay.style.display = 'block';
     };
 
@@ -87,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     mlaPublisher.value = note.publisher || '';
                     mlaPublicationDate.value = note.publicationDate || '';
                     noteForm.style.display = 'block';
+                    mlaFormatDisplay.style.display = 'none';
                 };
 
                 deleteButton.textContent = 'X';
