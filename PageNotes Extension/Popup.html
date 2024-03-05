@@ -4,36 +4,30 @@
     <title>PageNotes</title>
     <style>
         body {
-            width: 300px; /* Set the width of the popup window to 300px */
-            padding: 20px; /* Increase padding for better readability */
-            font-family: 'Helvetica Neue', sans-serif; /* Change the font to Helvetica Neue */
+            width: 300px;
+            padding: 20px;
+            font-family: 'Helvetica Neue', sans-serif;
         }
-
-        /* Custom styling for saved note buttons */
-        .savedNoteButton {
+        .savedNoteButton, .deleteNoteButton, #saveNote, #generateMLA {
             background-color: #007bff;
             color: white;
             padding: 5px 10px;
-            margin: 5px;
+            margin: 5px 0;
             border: none;
             border-radius: 3px;
             cursor: pointer;
         }
-
-        /* Apply Helvetica Neue font to the textarea */
-        textarea {
+        .deleteNoteButton {
+            background-color: red;
+        }
+        textarea, input[type="text"] {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 14px; /* Adjust the font size as needed */
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 5px;
         }
-
-        /* Margin for the Add note button */
         .addNoteButton {
-            margin-bottom: 20px; /* Adjust the margin-bottom value as needed for spacing */
-        }
-
-        /* Styling for the "Note Library" text */
-        .noteLibraryText {
-            font-size: 14px; /* Increase font size for the Note Library text */
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -41,17 +35,23 @@
     <h1>Welcome to PageNotes!</h1>
     <button id="addNote" class="addNoteButton">Add note</button>
     <div id="noteForm" style="display:none;">
+        <input type="text" id="noteName" placeholder="Note Title">
         <div>
             <span>URL:</span>
             <input type="text" id="noteUrl">
         </div>
-        <textarea id="noteContent" rows="5" cols="20"></textarea>
+        <textarea id="noteContent" rows="5"></textarea>
+        <!-- MLA Format Fields -->
+        <input type="text" id="mlaAuthor" placeholder="Author">
+        <input type="text" id="mlaTitle" placeholder="Title">
+        <input type="text" id="mlaWebsiteTitle" placeholder="Website Title">
+        <input type="text" id="mlaPublisher" placeholder="Publisher">
+        <input type="text" id="mlaPublicationDate" placeholder="Publication Date">
         <button id="saveNote">Save</button>
+        <button id="generateMLA">Generate MLA</button>
     </div>
-    <p class="noteLibraryText">Note Library:</p>
+    <div id="mlaFormatDisplay" style="margin-top: 20px; display: none;"></div>
     <div id="savedNotes"></div>
     <script src="popup.js"></script>
-    <!-- Add this div for displaying the 'Saved!' message -->
-    <div id="savedMessage" style="display: none; background-color: lightgreen; color: white; padding: 10px; margin-top: 10px; border-radius: 5px;">Saved!</div>
 </body>
 </html>
